@@ -89,4 +89,11 @@ interface IEvent
      * @return IEvent
      */
     public function stopPropagation();
+
+    /**
+     * Convert event to string.
+     *
+     * @return string
+     */
+    public function __toString();
 }

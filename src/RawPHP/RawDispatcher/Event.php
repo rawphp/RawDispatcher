@@ -27,13 +27,13 @@ use RawPHP\RawDispatcher\Contract\IEvent;
 
 class Event implements IEvent
 {
-    /** @var string */
+    /** @var  string */
     protected $name;
-    /** @var DateTime */
+    /** @var  DateTime */
     protected $date;
-    /** @var IDispatcher */
+    /** @var  IDispatcher */
     protected $dispatcher;
-    /** @var bool */
+    /** @var  bool */
     protected $stopped;
 
     /**
@@ -126,5 +126,17 @@ class Event implements IEvent
         $this->stopped = TRUE;
 
         return $this;
+    }
+
+    /**
+     * Converts the event object to string.
+     */
+    public function __toString()
+    {
+        $pts = explode( '\\', get_class( $this ) );
+
+        $str = 'Event: ' . array_pop( $pts ) . ' fired';
+
+        return $str;
     }
 }

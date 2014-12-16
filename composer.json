@@ -10,9 +10,16 @@
     ],
     "autoload": {
         "psr-4": {
-            "RawPHP\\RawDispatcher\\": "src/"
+            "RawPHP\\RawDispatcher\\": "src/RawPHP/RawDispatcher/"
         }
     },
-    "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "rawphp/raw-support": "dev-master"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
+    },
+    "minimum-stability": "dev"
 }
