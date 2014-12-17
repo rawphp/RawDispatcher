@@ -32,9 +32,9 @@ use RawPHP\RawDispatcher\Contract\IListener;
  */
 class Dispatcher implements IDispatcher
 {
-    /** @var array */
+    /** @var  array */
     protected $listeners = [ ];
-    /** @var array */
+    /** @var  array */
     private $_sorted = [ ];
 
     /**
@@ -61,7 +61,7 @@ class Dispatcher implements IDispatcher
             ->setEventName( $eventName )
             ->setDateTime();
 
-        foreach ( $this->getListeners( $event ) as $listener )
+        foreach ( $this->getListeners( $eventName ) as $listener )
         {
             call_user_func( [ $listener, 'handle' ], $event, $eventName, $this );
 

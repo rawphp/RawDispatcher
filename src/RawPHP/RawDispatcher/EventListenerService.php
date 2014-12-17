@@ -35,8 +35,9 @@
 
 namespace RawPHP\RawDispatcher;
 
+use RawPHP\RawDispatcher\Contract\IDispatcher;
 use RawPHP\RawDispatcher\Contract\IEvent;
-use RawPHP\RawDispatcher\Contract\IEventListener;
+use RawPHP\RawDispatcher\Contract\IListener;
 use RawPHP\RawSupport\Service\Service;
 
 /**
@@ -44,14 +45,16 @@ use RawPHP\RawSupport\Service\Service;
  *
  * @package RawPHP\RawDispatcher
  */
-abstract class EventListenerService extends Service implements IEventListener
+abstract class EventListenerService extends Service implements IListener
 {
     /**
      * Handle an event.
      *
-     * @param IEvent $event
+     * @param IEvent      $event      the event
+     * @param string      $name       event name
+     * @param IDispatcher $dispatcher the event dispatcher
      */
-    public function handle( IEvent $event )
+    public function handle( IEvent $event, $name, IDispatcher $dispatcher )
     {
         $sections = explode( '\\', get_class( $event ) );
         $class    = $sections[ count( $sections ) - 1 ];
